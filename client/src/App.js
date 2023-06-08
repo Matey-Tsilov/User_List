@@ -1,9 +1,12 @@
-import Header from "./components/Header.js";
+import Footer from "./components/common/Footer.js";
+import Header from "./components/common/Header.js";
 
 function App() {
   return (
     <div>
       <Header />
+
+      <Footer />
     </div>
   );
 }
