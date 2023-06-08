@@ -1,10 +1,15 @@
 import UserRow from "./UserRow.js"
+import * as userService from "../../service/UserService.js"
+import { useState } from "react"
+import UserDetails from "./UserDetails.js"
 
 const UserSection = (props) => {
+ 
+const [selectedUser, setSelectedUser] = useState(null)
 
    const clickHandler = (userId) => {
-    console.log(userId);
-
+       userService.getById(userId)
+         .then(res => setSelectedUser(res))
    }
 
     return ( <div className="table-wrapper">
@@ -78,6 +83,8 @@ const UserSection = (props) => {
         </div> -->
     <!-- </div> --> */}
 
+    {selectedUser && <UserDetails user={selectedUser}/>}
+
     <table className="table">
       <thead>
         <tr>
@@ -142,3 +149,4 @@ const UserSection = (props) => {
 }
 
 export default UserSection
+
