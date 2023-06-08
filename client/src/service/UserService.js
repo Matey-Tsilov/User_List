@@ -7,3 +7,10 @@ export const getAll = async () => {
 
      return result.users
 }
+
+export const getById = async (id) => {
+    const response = await fetch(baseUrl + '/' + id)
+    const result = response.json()
+    
+    return result.user
+}
