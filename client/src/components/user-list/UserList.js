@@ -1,4 +1,6 @@
-const UserSection = () => {
+import UserRow from "./UserRow.js"
+
+const UserSection = (props) => {
     return ( <div className="table-wrapper">
     {/* <!-- Overlap components  -->
 
@@ -126,10 +128,11 @@ const UserSection = () => {
         </tr>
       </thead>
       <tbody>
-        {/* <!-- Table row component --> */}
+       {props.users.map(u => <UserRow key={u._id} {...u}/>)}
         
       </tbody>
     </table>
   </div>)
 }
+
 export default UserSection

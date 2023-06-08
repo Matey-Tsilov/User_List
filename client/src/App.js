@@ -23,7 +23,7 @@ const [users, setUsers] = useState([])
       <main className="main">
        <section className="card users-container">
          <Search />
-         <UserSection />
+         <UserSection users={users}/>
        </section>
       </main>
       <Footer />
