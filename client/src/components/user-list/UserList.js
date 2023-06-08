@@ -11,6 +11,9 @@ const [selectedUser, setSelectedUser] = useState(null)
        userService.getById(userId)
          .then(res => setSelectedUser(res))
    }
+   const closeHandler = () => {
+    setSelectedUser(null)
+   }
 
     return ( <div className="table-wrapper">
     {/* <!-- Overlap components  -->
@@ -83,7 +86,7 @@ const [selectedUser, setSelectedUser] = useState(null)
         </div> -->
     <!-- </div> --> */}
 
-    {selectedUser && <UserDetails user={selectedUser}/>}
+    {selectedUser && <UserDetails user={selectedUser} closeHandler={closeHandler}/>}
 
     <table className="table">
       <thead>
