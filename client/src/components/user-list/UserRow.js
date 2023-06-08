@@ -1,16 +1,16 @@
-const UserRow = (props) => {
+const UserRow = ({user, clickHandler}) => {
 
     return (
     <tr>
         <td>
-          <img src={props.imageUrl}
-            alt={`${props.firstName}'s Profile`} className="image" />
+          <img src={user.imageUrl}
+            alt={`${user.firstName}'s Profile`} className="image" />
         </td>
-        <td>{props.firstName}</td>
-        <td>{props.lastName}</td>
-        <td>{props.email}</td>
-        <td>{props.phoneNumber}</td>
-        <td>{props.createdAt}</td>
+        <td>{user.firstName}</td>
+        <td>{user.lastName}</td>
+        <td>{user.email}</td>
+        <td>{user.phoneNumber}</td>
+        <td>{user.createdAt}</td>
 
         <td className="actions">
           <button className="btn edit-btn" title="Edit">
@@ -30,7 +30,7 @@ const UserRow = (props) => {
               </path>
             </svg>
           </button>
-          <button className="btn info-btn" title="Info">
+          <button onClick={() => clickHandler(user._id)} className="btn info-btn" title="Info">
             <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="info"
               className="svg-inline--fa fa-info" role="img" xmlns="http://www.w3.org/2000/svg"
               viewBox="-150 0 512 612">

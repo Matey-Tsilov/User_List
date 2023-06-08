@@ -1,22 +1,21 @@
+import { useEffect, useState } from "react";
+
+import * as userService from "./service/UserService.js";
+
 import Footer from "./components/common/Footer.js";
 import Header from "./components/common/Header.js";
 import Search from "./components/search/Search.js";
 import UserSection from "./components/user-list/UserList.js";
-import { useEffect, useState } from "react";
-
-const baseUrl = 'http://localhost:3005/api/users'
 
 function App() {
 
 const [users, setUsers] = useState([])
 
     useEffect(() => {
-      fetch(baseUrl)
-      .then(res => res.json())
-      .then(result => setUsers(result.users))
+      userService.getAll()
+         .then(res => setUsers(res))
     }, [])
 
-    console.log(users);
   return (
     <div>
       <Header />

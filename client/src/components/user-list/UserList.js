@@ -1,6 +1,12 @@
 import UserRow from "./UserRow.js"
 
 const UserSection = (props) => {
+
+   const clickHandler = (userId) => {
+    console.log(userId);
+
+   }
+
     return ( <div className="table-wrapper">
     {/* <!-- Overlap components  -->
 
@@ -128,7 +134,7 @@ const UserSection = (props) => {
         </tr>
       </thead>
       <tbody>
-       {props.users.map(u => <UserRow key={u._id} {...u}/>)}
+       {props.users.map(u => <UserRow key={u._id} user={u} clickHandler={clickHandler}/>)}
         
       </tbody>
     </table>
