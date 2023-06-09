@@ -36,9 +36,9 @@ const CreateUser = ({closeHanlder}) => {
                   </span>
                   <input id="firstName" name="firstName" type="text" />
                 </div>
-                <p className="form-error">
+                {/* <p className="form-error">
                   First name should be at least 3 characters long!
-                </p>
+                </p> */}
               </div>
               <div className="form-group">
                 <label htmlFor="lastName">Last name</label>
@@ -48,9 +48,9 @@ const CreateUser = ({closeHanlder}) => {
                   </span>
                   <input id="lastName" name="lastName" type="text" />
                 </div>
-                <p className="form-error">
+                {/* <p className="form-error">
                   Last name should be at least 3 characters long!
-                </p>
+                </p> */}
               </div>
             </div>
 
@@ -63,7 +63,7 @@ const CreateUser = ({closeHanlder}) => {
                   </span>
                   <input id="email" name="email" type="text" />
                 </div>
-                <p className="form-error">Email is not valid!</p>
+                {/* <p className="form-error">Email is not valid!</p> */}
               </div>
               <div className="form-group">
                 <label htmlFor="phoneNumber">Phone number</label>
@@ -73,7 +73,7 @@ const CreateUser = ({closeHanlder}) => {
                   </span>
                   <input id="phoneNumber" name="phoneNumber" type="text" />
                 </div>
-                <p className="form-error">Phone number is not valid!</p>
+                {/* <p className="form-error">Phone number is not valid!</p> */}
               </div>
             </div>
 
@@ -85,7 +85,7 @@ const CreateUser = ({closeHanlder}) => {
                 </span>
                 <input id="imageUrl" name="imageUrl" type="text" />
               </div>
-              <p className="form-error">ImageUrl is not valid!</p>
+              {/* <p className="form-error">ImageUrl is not valid!</p> */}
             </div>
 
             <div className="form-row">
@@ -97,9 +97,9 @@ const CreateUser = ({closeHanlder}) => {
                   </span>
                   <input id="country" name="country" type="text" />
                 </div>
-                <p className="form-error">
+                {/* <p className="form-error">
                   Country should be at least 2 characters long!
-                </p>
+                </p> */}
               </div>
               <div className="form-group">
                 <label htmlFor="city">City</label>
@@ -109,9 +109,9 @@ const CreateUser = ({closeHanlder}) => {
                   </span>
                   <input id="city" name="city" type="text" />
                 </div>
-                <p className="form-error">
+                {/* <p className="form-error">
                   City should be at least 3 characters long!
-                </p>
+                </p> */}
               </div>
             </div>
 
@@ -124,9 +124,9 @@ const CreateUser = ({closeHanlder}) => {
                   </span>
                   <input id="street" name="street" type="text" />
                 </div>
-                <p className="form-error">
+                {/* <p className="form-error">
                   Street should be at least 3 characters long!
-                </p>
+                </p> */}
               </div>
               <div className="form-group">
                 <label htmlFor="streetNumber">Street number</label>
@@ -136,9 +136,9 @@ const CreateUser = ({closeHanlder}) => {
                   </span>
                   <input id="streetNumber" name="streetNumber" type="text" />
                 </div>
-                <p className="form-error">
+                {/* <p className="form-error">
                   Street number should be a positive number!
-                </p>
+                </p> */}
               </div>
             </div>
             <div id="form-actions">
