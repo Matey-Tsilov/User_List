@@ -1,14 +1,44 @@
-const CreateUser = ({closeHanlder}) => {
+import * as userService from "../../service/UserService";
 
+const CreateUser = ({ closeHandler, setUsers }) => {
+    
+  const createUserRow = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    
+    const {
+      firstName,
+      lastName,
+      email,
+      imageUrl,
+      phoneNumber,
+      ...address
+    } = Object.fromEntries(formData);
+
+    const userData = {
+        firstName,
+        lastName,
+        email,
+        imageUrl,
+        phoneNumber,
+        address}
+
+    userService.create(userData)
+         .then(res => {
+            setUsers(users => [...users, res])
+            closeHandler()
+        });
+  };
 
   return (
     <div className="overlay">
-      <div className="backdrop" onClick={closeHanlder}></div>
+      <div className="backdrop" onClick={closeHandler}></div>
       <div className="modal">
         <div className="user-container">
           <header className="headers">
             <h2>Add User</h2>
-            <button className="btn close" onClick={closeHanlder}>
+            <button className="btn close" onClick={closeHandler}>
               <svg
                 aria-hidden="true"
                 focusable="false"
@@ -26,7 +56,7 @@ const CreateUser = ({closeHanlder}) => {
               </svg>
             </button>
           </header>
-          <form>
+          <form onSubmit={createUserRow}>
             <div className="form-row">
               <div className="form-group">
                 <label htmlFor="firstName">First name</label>
@@ -142,10 +172,19 @@ const CreateUser = ({closeHanlder}) => {
               </div>
             </div>
             <div id="form-actions">
-              <button id="action-save" className="btn" type="submit">
+              <button
+                id="action-save"
+                className="btn"
+                type="submit"
+              >
                 Create
               </button>
-              <button id="action-cancel" className="btn" type="button" onClick={closeHanlder}>
+              <button
+                id="action-cancel"
+                className="btn"
+                type="button"
+                onClick={closeHandler}
+              >
                 Cancel
               </button>
             </div>
@@ -156,4 +195,4 @@ const CreateUser = ({closeHanlder}) => {
   );
 };
 
-export default CreateUser
+export default CreateUser;

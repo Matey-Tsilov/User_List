@@ -28,9 +28,9 @@ const [selectedView, setSelectedView] = useState({user: null, action: null})
     <div className="table-wrapper">
 
     {selectedView.action == 'details' && <UserDetails user={selectedView.user} closeHandler={closeHandler}/>}
-    {selectedView.action == 'create' && <CreateUser closeHandler={closeHandler}/>}
-    {/* {selectedView.action == 'edit' && <UserDetails user={selectedView.user} closeHandler={closeHandler}/>}
-    {selectedView.action == 'delete' && <UserDetails user={selectedView.user} closeHandler={closeHandler}/>} */}
+    {selectedView.action == 'create' && <CreateUser closeHandler={closeHandler} setUsers={props.setUsers} />}
+    {selectedView.action == 'delete' && <UserDetails user={selectedView.user} closeHandler={closeHandler}/>}
+    {/* {selectedView.action == 'edit' && <UserDetails user={selectedView.user} closeHandler={closeHandler}/>}*/}
 
 
     <table className="table">
@@ -90,7 +90,6 @@ const [selectedView, setSelectedView] = useState({user: null, action: null})
       </thead>
       <tbody>
        {props.users.map(u => <UserRow key={u._id} user={u} detailsClick={detailsClick}/>)}
-        
       </tbody>
     </table>
   </div>
