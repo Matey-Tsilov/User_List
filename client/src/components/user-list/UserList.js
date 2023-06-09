@@ -14,10 +14,10 @@ const [selectedView, setSelectedView] = useState({user: null, action: null})
        userService.getById(userId)
          .then(res => setSelectedView({user: res, action: 'details'}))
    }
-
    const createClick = () => {
-    setSelectedView({user: null, ation: 'create'})
+    setSelectedView({user: null, action: 'create'})
    }
+
 
    const closeHandler = () => {
     setSelectedView({user: null, action: null})
