@@ -15,7 +15,9 @@ const [selectedUser, setSelectedUser] = useState(null)
     setSelectedUser(null)
    }
 
-    return ( <div className="table-wrapper">
+    return ( 
+    <>
+    <div className="table-wrapper">
     {/* <!-- Overlap components  -->
 
     <!-- <div className="loading-shade"> -->
@@ -148,7 +150,11 @@ const [selectedUser, setSelectedUser] = useState(null)
         
       </tbody>
     </table>
-  </div>)
+  </div>
+  
+  <button className="btn-add btn">Add new user</button>
+  </>
+  )
 }
 
 export default UserSection
