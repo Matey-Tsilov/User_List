@@ -145,7 +145,7 @@ const CreateUser = ({closeHanlder}) => {
               <button id="action-save" className="btn" type="submit">
                 Create
               </button>
-              <button id="action-cancel" className="btn" type="button">
+              <button id="action-cancel" className="btn" type="button" onClick={closeHanlder}>
                 Cancel
               </button>
             </div>
