@@ -6,6 +6,7 @@ import UserRow from "./UserRow.js"
 import UserDetails from "./UserDetails.js"
 import CreateUser from "./CreateUser.js"
 import UserDelete from "./UserDelete.js"
+import UserEdit from "./UserEdit.js"
 
 const UserSection = (props) => {
  
@@ -19,6 +20,11 @@ const [selectedView, setSelectedView] = useState({user: null, action: null})
     userService.getById(userId)
          .then(res => setSelectedView({user: res, action: 'delete'}))
    }
+   const updateClick = (userId) => {
+    userService.getById(userId)
+         .then(res => setSelectedView({user: res, action: 'edit'}))
+   }
+
 
    
    const createClick = () => {
@@ -37,7 +43,7 @@ const [selectedView, setSelectedView] = useState({user: null, action: null})
     {selectedView.action == 'details' && <UserDetails user={selectedView.user} closeHandler={closeHandler}/>}
     {selectedView.action == 'create' && <CreateUser closeHandler={closeHandler} setUsers={props.setUsers} />}
     {selectedView.action == 'delete' && <UserDelete setUsers={props.setUsers} closeHandler={closeHandler} user={selectedView.user}/>}
-    {/* {selectedView.action == 'edit' && <UserDetails user={selectedView.user} closeHandler={closeHandler}/>}*/}
+    {selectedView.action == 'edit' && <UserEdit user={selectedView.user} closeHandler={closeHandler}/>}
 
 
     <table className="table">
@@ -96,7 +102,13 @@ const [selectedView, setSelectedView] = useState({user: null, action: null})
         </tr>
       </thead>
       <tbody>
-       {props.users.map(u => <UserRow key={u._id} user={u} detailsClick={detailsClick} deleteClick={deleteClick}/>)}
+       {props.users.map(u => <UserRow
+        key={u._id}
+        user={u}
+        detailsClick={detailsClick}
+        deleteClick={deleteClick}
+        updateClick={updateClick}
+        />)}
       </tbody>
     </table>
   </div>
