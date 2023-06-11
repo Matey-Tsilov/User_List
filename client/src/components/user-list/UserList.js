@@ -25,13 +25,9 @@ const [selectedView, setSelectedView] = useState({user: null, action: null})
          .then(res => setSelectedView({user: res, action: 'edit'}))
    }
 
-
-   
    const createClick = () => {
     setSelectedView({user: null, action: 'create'})
    }
-
-
    const closeHandler = () => {
     setSelectedView({user: null, action: null})
    }
@@ -43,7 +39,7 @@ const [selectedView, setSelectedView] = useState({user: null, action: null})
     {selectedView.action == 'details' && <UserDetails user={selectedView.user} closeHandler={closeHandler}/>}
     {selectedView.action == 'create' && <CreateUser closeHandler={closeHandler} setUsers={props.setUsers} />}
     {selectedView.action == 'delete' && <UserDelete setUsers={props.setUsers} closeHandler={closeHandler} user={selectedView.user}/>}
-    {selectedView.action == 'edit' && <UserEdit user={selectedView.user} closeHandler={closeHandler}/>}
+    {selectedView.action == 'edit' && <UserEdit setUsers={props.setUsers} user={selectedView.user} closeHandler={closeHandler}/>}
 
 
     <table className="table">

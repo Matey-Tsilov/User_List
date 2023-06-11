@@ -22,14 +22,13 @@ const CreateUser = ({ closeHandler, setUsers }) => {
         email,
         imageUrl,
         phoneNumber,
-        address}
+        address }
 
     userService.create(userData)
-         .then(res => {
-            setUsers(users => [...users, res])
-            closeHandler()
-        });
-  };
+         .then(res => setUsers(users => [...users, res]))
+         
+         closeHandler()   
+  }  
 
   return (
     <div className="overlay">
