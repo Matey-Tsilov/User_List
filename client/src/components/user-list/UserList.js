@@ -11,7 +11,7 @@ import UserEdit from "./UserEdit.js";
 const UserSection = (props) => {
   const [selectedView, setSelectedView] = useState({
     user: null,
-    action: null,
+    action: null
   });
 
   const detailsClick = (userId) => {
@@ -37,9 +37,38 @@ const UserSection = (props) => {
     setSelectedView({ user: null, action: null });
   };
 
+  function queryFinder(query) {
+
+
+    if (query) {
+      return props.users
+        .filter((u) => u[props.query.criteria].includes(props.query.search))
+        .map((u) => (
+          <UserRow
+            key={u._id}
+            user={u}
+            detailsClick={detailsClick}
+            deleteClick={deleteClick}
+            updateClick={updateClick}
+          />
+        ));
+    } else {
+      return props.users.map((u) => (
+        <UserRow
+          key={u._id}
+          user={u}
+          detailsClick={detailsClick}
+          deleteClick={deleteClick}
+          updateClick={updateClick}
+        />
+      ));
+    }
+  }
+
   return (
     <>
       <div className="table-wrapper">
+
         {selectedView.action == "details" && (
           <UserDetails user={selectedView.user} closeHandler={closeHandler} />
         )}
@@ -62,6 +91,7 @@ const UserSection = (props) => {
         )}
 
         <table className="table">
+          
           <thead>
             <tr>
               <th>Image</th>
@@ -158,31 +188,7 @@ const UserSection = (props) => {
               <th>Actions</th>
             </tr>
           </thead>
-          <tbody>
-            {props.query
-              ? props.users
-                  .filter((u) =>
-                    u[props.query.criteria].includes(props.query.search)
-                  )
-                  .map((u) => (
-                    <UserRow
-                      key={u._id}
-                      user={u}
-                      detailsClick={detailsClick}
-                      deleteClick={deleteClick}
-                      updateClick={updateClick}
-                    />
-                  ))
-              : props.users.map((u) => (
-                  <UserRow
-                    key={u._id}
-                    user={u}
-                    detailsClick={detailsClick}
-                    deleteClick={deleteClick}
-                    updateClick={updateClick}
-                  />
-                ))}
-          </tbody>
+          <tbody>{queryFinder(props.query)}</tbody>
         </table>
       </div>
 
