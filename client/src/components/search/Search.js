@@ -30,6 +30,11 @@ const searchUsers = (e) => {
 
 }
 
+const deleteSearch = (e) => {
+e.preventDefault()
+setSearch('')
+}
+
 
     return ( <form className="search-form">
     <h2>
@@ -44,8 +49,7 @@ const searchUsers = (e) => {
     </h2>
     <div className="search-input-container">
       <input type="text" placeholder="Please, select the search criteria" name="search" onChange={searchChangeHandler} value={search}/>
-      {/* <!-- Show the clear button only if input field length !== 0 --> */}
-  {(search.length > 0) && <button className="btn close-btn" >
+  {(search.length > 0) && <button onClick={deleteSearch} className="btn close-btn" >
     <i className="fa-solid fa-xmark"></i>
   </button>}
 
