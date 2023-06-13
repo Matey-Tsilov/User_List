@@ -48,8 +48,5 @@ export const updateUser = async (id, updatedUser) => {
 
     const result = await response.json()
 
-    console.log(result);
-    
-
     return result.user
 }

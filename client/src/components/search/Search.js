@@ -1,4 +1,36 @@
-const Search = () => {
+import { useEffect, useRef, useState } from "react"
+
+const criteriaInputs = {
+   'First Name': 'firstName',
+   'Last Name': 'lastName',
+   'Phone': 'phoneNumber',
+   'Email': 'email',
+
+}
+
+const Search = ({setQuery}) => {
+  
+const [search, setSearch] = useState('')
+const inputRef = useRef()
+
+const searchChangeHandler = (e) => {
+     setSearch(e.target.value)
+}
+
+const searchUsers = (e) => {
+  e.preventDefault()
+  let criteria = inputRef.current.value
+
+ if (criteria == 'Not selected') {
+  return alert('Please select the search criteria!')
+ }else {
+    criteria = criteriaInputs[criteria]
+    setQuery({criteria, search})
+ }
+
+}
+
+
     return ( <form className="search-form">
     <h2>
       <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user"
@@ -11,20 +43,20 @@ const Search = () => {
       <span>Users</span>
     </h2>
     <div className="search-input-container">
-      <input type="text" placeholder="Please, select the search criteria" name="search" />
+      <input type="text" placeholder="Please, select the search criteria" name="search" onChange={searchChangeHandler} value={search}/>
       {/* <!-- Show the clear button only if input field length !== 0 --> */}
-      <button className="btn close-btn">
-        <i className="fa-solid fa-xmark"></i>
-      </button>
+  {(search.length > 0) && <button className="btn close-btn" >
+    <i className="fa-solid fa-xmark"></i>
+  </button>}
 
-      <button className="btn" title="Please, select the search criteria">
+      <button className="btn" title="Please, select the search criteria" onClick={searchUsers}>
         <i className="fa-solid fa-magnifying-glass"></i>
       </button>
     </div>
 
     <div className="filter">
       <span>Search Criteria:</span>
-      <select name="criteria" className="criteria">
+      <select name="criteria" className="criteria" ref={inputRef}>
         <option>Not selected</option>
         <option>First Name</option>
         <option>Last Name</option>

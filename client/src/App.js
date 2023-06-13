@@ -10,6 +10,7 @@ import UserSection from "./components/user-list/UserList.js";
 function App() {
 
 const [users, setUsers] = useState([])
+const [query, setQuery] = useState(null)
 
     useEffect(() => {
       userService.getAll()
@@ -21,8 +22,8 @@ const [users, setUsers] = useState([])
       <Header />
       <main className="main">
        <section className="card users-container">
-         <Search />
-         <UserSection users={users} setUsers={setUsers}/>
+         <Search setQuery={setQuery}/>
+         <UserSection query={query} users={users} setUsers={setUsers}/>
        </section>
       </main>
       <Footer />
